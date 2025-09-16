@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './custom.css';
+
+@layer base {
+  :root {
+    /* Light mode */
+    --background: #fafafa;
+    --foreground: #020617;
+    --highlight: #3b82f6;
+    --highlight-foreground: #ffffff;
+    --navy: #1e293b;
+    --navy-light: #475569;
+    --accent: #e0f2fe;
+    --muted: #f1f5f9;
+    --muted-foreground: #64748b;
+    --border: #e2e8f0;
+    --input: #e2e8f0;
+
+    /* Smooth scrolling for magic scroll effects */
+    scroll-behavior: smooth;
+  }
+
+  .dark {
+    /* Dark mode */
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --highlight: #60a5fa;
+    --highlight-foreground: #020617;
+    --navy: #cbd5e1;
+    --navy-light: #94a3b8;
+    --accent: #0c4a6e;
+    --muted: #1e293b;
+    --muted-foreground: #94a3b8;
+    --border: #334155;
+    --input: #334155;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  /* Force immediate application of theme colors */
+  :root,
+  :root.light,
+  :root.dark,
+  html,
+  body,
+  body.light,
+  body.dark {
+    transition: none !important;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .heading {
+    @apply font-bold tracking-tight;
+  }
+  
+  /* Matt finish effect for images */
+  .matt-finish {
+    @apply relative;
+  }
+  
+  .matt-finish::after {
+    content: "";
+    @apply absolute inset-0 backdrop-saturate-[0.8] backdrop-contrast-[1.1] mix-blend-overlay pointer-events-none;
+    background-color: rgb(var(--foreground) / 0.05);
+  }
+  
+  /* Magic scroll container */
+  .scroll-container {
+    @apply relative w-full overflow-hidden;
+  }
+  
+  /* Parallax elements */
+  .parallax {
+    @apply will-change-transform;
+    transition: transform 0.1s cubic-bezier(0.2, 0, 0.8, 1);
+  }
+}

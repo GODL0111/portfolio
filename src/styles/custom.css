@@ -1,0 +1,22 @@
+/* Define a custom rotate class for the classified watermark */
+.rotate-30 {
+  transform: rotate(-30deg);
+  width: 100vw; /* Ensure full width */
+  text-align: center; /* Center align content */
+  position: relative; /* Needed for proper positioning */
+}
+
+/* Add a stamp-like effect for the classified watermark */
+@keyframes pulse-subtle {
+  0% { opacity: 0.95; }
+  50% { opacity: 1; }
+  100% { opacity: 0.95; }
+}
+
+.text-stamp {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  animation: pulse-subtle 4s ease-in-out infinite;
+  white-space: nowrap; /* Prevent text wrapping */
+  letter-spacing: 0.05em; /* Add slight letter spacing for better readability */
+  font-stretch: expanded; /* Expand the font slightly */
+}
